@@ -6,15 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.praktikum.basePage.BasePage;
 
 import java.time.Duration;
 
-public class DownListPage {
-
-    private WebDriver webDriver;
+public class DownListPage extends BasePage {
 
     public DownListPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
     }
 
     //    Локаторы для полей с выпадашкой
@@ -54,12 +53,6 @@ public class DownListPage {
             xpath("//p[text()='Да, обязательно. Всем самокатов! И Москве, и Московской области.']");
 
 
-    //    метод скрола до элемента
-    public void scrollToElement(By by) {
-        WebElement element = webDriver.findElement(by);
-        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView();", element);
-    }
-
     //    метод клика по элементу
     public void clickList(By by) {
         scrollToElement(by);
@@ -67,7 +60,7 @@ public class DownListPage {
     }
 
     //    методо получения текста из выпадающего поля
-    public String getText(By by) {
+    public String gettingTextFromDropdownField(By by) {
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         return webDriver.findElement(by).getText();

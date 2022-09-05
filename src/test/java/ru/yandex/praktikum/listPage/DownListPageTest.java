@@ -1,30 +1,11 @@
 package ru.yandex.praktikum.listPage;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.yandex.praktikum.basePageTest.BasePageTest;
 
 
-public class DownListPageTest {
-    private WebDriver webDriver;
-
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        webDriver = new ChromeDriver();
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
-        webDriver.manage().window().maximize();
-    }
-
-    @After
-    public void teardown() {
-        webDriver.quit();
-    }
-
+public class DownListPageTest extends BasePageTest {
 
     @Test
     public void checkPanel1() {
@@ -32,7 +13,7 @@ public class DownListPageTest {
         downListPage.scrollToElement(downListPage.heading0);
         downListPage.clickList(downListPage.heading0);
         String expected = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
-        String actually = downListPage.getText(downListPage.accordion0);
+        String actually = downListPage.gettingTextFromDropdownField(downListPage.accordion0);
         Assert.assertEquals("Текст в поле не верный", expected, actually);
     }
 
@@ -43,7 +24,7 @@ public class DownListPageTest {
         downListPage.clickList(downListPage.heading1);
         String expected = "Пока что у нас так: один заказ — один самокат." +
                 " Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.";
-        String actually = downListPage.getText(downListPage.accordion1);
+        String actually = downListPage.gettingTextFromDropdownField(downListPage.accordion1);
         Assert.assertEquals("Текст в поле не верный", expected, actually);
     }
 
@@ -56,7 +37,7 @@ public class DownListPageTest {
                 " Мы привозим самокат 8 мая в течение дня." +
                 " Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру." +
                 " Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.";
-        String actually = downListPage.getText(downListPage.accordion2);
+        String actually = downListPage.gettingTextFromDropdownField(downListPage.accordion2);
         Assert.assertEquals("Текст в поле не верный", expected, actually);
     }
 
@@ -66,7 +47,7 @@ public class DownListPageTest {
         downListPage.scrollToElement(downListPage.heading3);
         downListPage.clickList(downListPage.heading3);
         String expected = "Только начиная с завтрашнего дня. Но скоро станем расторопнее.";
-        String actually = downListPage.getText(downListPage.accordion3);
+        String actually = downListPage.gettingTextFromDropdownField(downListPage.accordion3);
         Assert.assertEquals("Текст в поле не верный", expected, actually);
     }
 
@@ -77,7 +58,7 @@ public class DownListPageTest {
         downListPage.clickList(downListPage.heading4);
         String expected = "Пока что нет!" +
                 " Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.";
-        String actually = downListPage.getText(downListPage.accordion4);
+        String actually = downListPage.gettingTextFromDropdownField(downListPage.accordion4);
         Assert.assertEquals("Текст в поле не верный", expected, actually);
     }
 
@@ -89,7 +70,7 @@ public class DownListPageTest {
         String expected = "Самокат приезжает к вам с полной зарядкой." +
                 " Этого хватает на восемь суток — даже если будете кататься без передышек и во сне." +
                 " Зарядка не понадобится.";
-        String actually = downListPage.getText(downListPage.accordion5);
+        String actually = downListPage.gettingTextFromDropdownField(downListPage.accordion5);
         Assert.assertEquals("Текст в поле не верный", expected, actually);
     }
 
@@ -100,7 +81,7 @@ public class DownListPageTest {
         downListPage.clickList(downListPage.heading6);
         String expected = "Да, пока самокат не привезли." +
                 " Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.";
-        String actually = downListPage.getText(downListPage.accordion6);
+        String actually = downListPage.gettingTextFromDropdownField(downListPage.accordion6);
         Assert.assertEquals("Текст в поле не верный", expected, actually);
     }
 
@@ -110,7 +91,7 @@ public class DownListPageTest {
         downListPage.scrollToElement(downListPage.heading7);
         downListPage.clickList(downListPage.heading7);
         String expected = "Да, обязательно. Всем самокатов! И Москве, и Московской области.";
-        String actually = downListPage.getText(downListPage.accordion7);
+        String actually = downListPage.gettingTextFromDropdownField(downListPage.accordion7);
         Assert.assertEquals("Текст в поле не верный", expected, actually);
     }
 }

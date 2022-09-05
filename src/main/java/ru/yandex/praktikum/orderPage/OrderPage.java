@@ -4,32 +4,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.praktikum.basePage.BasePage;
 
 import java.time.Duration;
 
-public class OrderPage {
-
-    private WebDriver webDriver;
+public class OrderPage extends BasePage {
 
     public OrderPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
     }
-
-    // Тестовые данные
-    protected String nameTest = "Иван";
-    protected String lastNameTest = "Иванов";
-    protected String adressTest = "г.Москва, Севанская 8, кв 36";
-    protected String telTest = "81233455678";
-
-
-    protected String commentTest = "Комментарий для курьера";
 
 
     //    Локатор для кнопки заказа верхний
     protected By topOrderButton = By.className("Button_Button__ra12g");
 
     //    Локатор для кнопки заказа внизу
-    protected By bottomOrderButton = By.xpath("//button[contains(@class, 'Button_Middle__1CSJM')]");
+    protected By bottomOrderButton = By.xpath("//*[@class='Button_Button__ra12g Button_Middle__1CSJM']");
 
     //    Локатор поля Name
     protected By name = By.xpath("//input[@placeholder='* Имя']");
@@ -38,14 +28,14 @@ public class OrderPage {
     protected By lastName = By.xpath("//input[@placeholder='* Фамилия']");
 
     //    Локатор поля адресс
-    protected By adress = By.xpath("//input[contains(@placeholder, 'куда')]");
+    protected By address = By.xpath("//input[contains(@placeholder, 'куда')]");
 
     //    Локатор поля метро
     protected By metro = By.xpath("//input[@placeholder='* Станция метро']");
 
 
     //    Локатор выбора станции метро Черкизовская
-    protected By cherkizon = By.xpath("//div[@class='select-search__select']//*[text()='Черкизовская']");
+    protected By cherkizovskaya = By.xpath("//div[@class='select-search__select']//*[text()='Черкизовская']");
 
     //    Локатор для поля номаре телефона
     protected By tel = By.xpath("//input[contains(@placeholder, 'на')]");
@@ -104,26 +94,38 @@ public class OrderPage {
         webDriver.findElement(by).click();
     }
 
-    //    Метод ввода валидных данных
-    public void enterValidData() {
-        webDriver.findElement(name).sendKeys(nameTest);
-        webDriver.findElement(lastName).sendKeys(lastNameTest);
-        webDriver.findElement(adress).sendKeys(adressTest);
+
+    //    Метод ввода Имени в поле
+    public void inputName(String text) {
+        webDriver.findElement(name).sendKeys(text);
+    }
+
+    //    Метод ввода Фамилии в поле
+    public void inputLastName(String text) {
+        webDriver.findElement(lastName).sendKeys(text);
+    }
+
+    //    Метод ввода адреса в поле
+    public void inputAddress(String text) {
+        webDriver.findElement(address).sendKeys(text);
+    }
+
+    //Метод клика по поле Метро
+    public void choiceOfMetroStation() {
         webDriver.findElement(metro).click();
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(cherkizon));
-        webDriver.findElement(cherkizon).click();
-        webDriver.findElement(tel).sendKeys(telTest);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(cherkizovskaya));
+        webDriver.findElement(cherkizovskaya).click();
+    }
+
+    //    Метод ввода в поле телефон
+    public void enterPhone(String text) {
+        webDriver.findElement(tel).sendKeys(text);
     }
 
     //    Метод клика по кнопке далее и ввода даты
     public void clickButtonFurther(By by) {
         webDriver.findElement(by).click();
-    }
-
-    //    Метод подтверждающий отображение страницы после нажатия
-    public boolean isDisplay(By by) {
-        return webDriver.findElement(by).isDisplayed();
     }
 
     //    Метод ввода даты
@@ -136,7 +138,7 @@ public class OrderPage {
     }
 
     //    Метод ввода срока аренды
-    public void rentPeriod(By field, By rent) {
+    public void dateInput(By field, By rent) {
         webDriver.findElement(field).click();
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(data));
@@ -144,17 +146,17 @@ public class OrderPage {
     }
 
     //    Метод выбора цвета самоката
-    public void colorSelection(By by) {
+    public void blackColorChoice(By by) {
         webDriver.findElement(by).click();
     }
 
     //    Метод коммента для курьера
-    public void commentEnter(By by, String text) {
+    public void inputComment(By by, String text) {
         webDriver.findElement(by).sendKeys(text);
     }
 
     // Метод получения текста подтверждающего заказ
-    public String genText() {
+    public String gettingTextFromButtonViewStatus() {
         return webDriver.findElement(orderConfirmed).getText();
     }
 }
