@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public abstract class BasePageTest {
 
@@ -13,10 +14,10 @@ public abstract class BasePageTest {
 
     @Before
     public void setUp() {
-//        System.setProperty("webdriver.firefox.driver", "geckodriver.exe");
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//        webDriver = new FirefoxDriver();
-        webDriver = new ChromeDriver();
+        System.setProperty("webdriver.firefox.driver", "geckodriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        webDriver = new FirefoxDriver();
+//        webDriver = new ChromeDriver();
         webDriver.get(URL);
     }
 

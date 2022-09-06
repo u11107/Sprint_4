@@ -83,15 +83,22 @@ public class OrderPage extends BasePage {
 
 
     //    Метод клика по верхней кнопки заказа
-    public void clickOrderButton(By by) {
+    public void clickOrderButtonTop() {
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-        webDriver.findElement(by).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(topOrderButton));
+        webDriver.findElement(topOrderButton).click();
+    }
+
+    //    Метод клика по нижней кнопки заказа
+    public void clickOrderButtonBottom() {
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(bottomOrderButton));
+        webDriver.findElement(bottomOrderButton).click();
     }
 
     //    Метод клика по кнопке Да
-    public void clickBottomYes(By by) {
-        webDriver.findElement(by).click();
+    public void clickBottomYes() {
+        webDriver.findElement(confirmationOrder).click();
     }
 
 
@@ -124,39 +131,43 @@ public class OrderPage extends BasePage {
     }
 
     //    Метод клика по кнопке далее и ввода даты
-    public void clickButtonFurther(By by) {
-        webDriver.findElement(by).click();
+    public void clickButtonFurther() {
+        webDriver.findElement(further).click();
     }
 
     //    Метод ввода даты
-    public void enterDate(By locator, By data) {
-        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        webDriver.findElement(locator).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(data));
+    public void enterDate() {
         webDriver.findElement(data).click();
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(calendarDate));
+        webDriver.findElement(calendarDate).click();
     }
 
     //    Метод ввода срока аренды
-    public void dateInput(By field, By rent) {
-        webDriver.findElement(field).click();
+    public void dateInput() {
+        webDriver.findElement(rentalPeriod).click();
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(data));
-        webDriver.findElement(rent).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(datePicker));
+        webDriver.findElement(datePicker).click();
     }
 
     //    Метод выбора цвета самоката
-    public void blackColorChoice(By by) {
-        webDriver.findElement(by).click();
+    public void blackColorChoice() {
+        webDriver.findElement(color).click();
     }
 
-    //    Метод коммента для курьера
-    public void inputComment(By by, String text) {
-        webDriver.findElement(by).sendKeys(text);
+    //    Метод ввода в поле коммента  для курьера
+    public void inputComment(String text) {
+        webDriver.findElement(comment).sendKeys(text);
     }
 
     // Метод получения текста подтверждающего заказ
     public String gettingTextFromButtonViewStatus() {
         return webDriver.findElement(orderConfirmed).getText();
+    }
+
+//   Метод клиака по кнопке ЗАКАЗАТЬ
+    public void clickOnOrderButton() {
+        webDriver.findElement(order).click();
     }
 }
