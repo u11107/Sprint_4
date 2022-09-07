@@ -37,9 +37,9 @@ public class OrderPageTest extends BasePageTest {
         orderPage.inputComment(commentTest1);
         orderPage.clickOnOrderButton();
         orderPage.clickBottomYes();
-        String expectation = "Посмотреть статус";
-        String actual = orderPage.gettingTextFromButtonViewStatus();
-        assertEquals("Ошибка, заказан не оформлен", expectation, actual);
+        String expected = "Посмотреть статус";
+        String actual = orderPage.getTextFromButtonViewStatus();
+        assertEquals("Ошибка, заказан не оформлен", expected, actual);
     }
 
     //   Тест для FireFox клик по верхней кнопке заказа
@@ -59,9 +59,9 @@ public class OrderPageTest extends BasePageTest {
         orderPage.inputComment(commentTest2);
         orderPage.clickOnOrderButton();
         orderPage.clickBottomYes();
-        String expectation = "Посмотреть статус";
-        String actual = orderPage.gettingTextFromButtonViewStatus();
-        assertEquals("Ошибка, заказан не оформлен", expectation, actual);
+        String expected = "Посмотреть статус";
+        String actual = orderPage.getTextFromButtonViewStatus();
+        assertEquals("Ошибка, заказан не оформлен", expected, actual);
     }
 
     //     Тест для Chrome клик через по нижней кнопке заказа
@@ -82,9 +82,9 @@ public class OrderPageTest extends BasePageTest {
         orderPage.inputComment(commentTest1);
         orderPage.clickOnOrderButton();
         orderPage.clickBottomYes();
-        String expectation = "Посмотреть статус";
-        String actual = orderPage.gettingTextFromButtonViewStatus();
-        assertEquals("Ошибка, заказан не оформлен", expectation, actual);
+        String expected = "Посмотреть статус";
+        String actual = orderPage.getTextFromButtonViewStatus();
+        assertEquals("Ошибка, заказан не оформлен", expected, actual);
     }
 
     //    Тест для FireFox  клик через по нижней кнопке заказа
@@ -105,8 +105,8 @@ public class OrderPageTest extends BasePageTest {
         orderPage.inputComment(commentTest2);
         orderPage.clickOnOrderButton();
         orderPage.clickBottomYes();
-        String expectation = "Посмотреть статус";
-        String actual = orderPage.gettingTextFromButtonViewStatus();
-        assertEquals("Ошибка, заказан не оформлен", expectation, actual);
+        String expected = "Посмотреть статус";
+        String actual = orderPage.getTextFromButtonViewStatus();
+        assertEquals("Ошибка, заказан не оформлен", expected, actual);
     }
 }

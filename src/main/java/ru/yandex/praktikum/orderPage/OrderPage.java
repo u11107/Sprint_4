@@ -162,7 +162,7 @@ public class OrderPage extends BasePage {
     }
 
     // Метод получения текста подтверждающего заказ
-    public String gettingTextFromButtonViewStatus() {
+    public String getTextFromButtonViewStatus() {
         return webDriver.findElement(orderConfirmed).getText();
     }
 

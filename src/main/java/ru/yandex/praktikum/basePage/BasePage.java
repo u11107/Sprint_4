@@ -30,7 +30,7 @@ public abstract class BasePage {
     }
 
     //    методо получения текста из выпадающего поля
-    public String gettingTextFromDropdownField(By by) {
+    public String getTextFromDropdownField(By by) {
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         return webDriver.findElement(by).getText();
